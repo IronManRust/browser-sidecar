@@ -1,0 +1,33 @@
+﻿h1, th, td {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    border-width: 1px;
+    padding: 1px;
+    border-style: solid;
+    border-color: Gray;
+}
+
+th {
+    background-color: Silver;
+}
+
+td {
+    background-color: White;
+}
+
+img {
+    height: 24px;
+    width: 24px;
+    vertical-align: middle;
+}
+
+a:link, a:visited, a:active, a:hover {
+    color: Blue;
+    text-decoration: none;
+}
