@@ -1,0 +1,28 @@
+﻿{
+    "name-full": "Browser Sidecar (Local)",
+    "name-short": "Sidecar",
+    "description": "A cross-platform, cross-browser extension that adds a 'sidecar' of content to any webpage you visit, suitable for an Evernote-like web clipper as well as many other uses.",
+    "author": "IronManRust",
+    "homepage": "https://github.com/IronManRust/browser-sidecar",
+    "version": "1.0.0.0",
+    "vendor": {
+        "chrome": {
+            "package-id": "ironmanrust.browser-sidecar"
+        },
+        "edge": { 
+            "package-id": "ironmanrust.browser-sidecar"
+        },
+        "firefox": {
+            "package-id": "ironmanrust.browser-sidecar@example.com"
+        },
+        "opera": {
+            "package-id": "ironmanrust.browser-sidecar"
+        },
+        "safari": {
+            "package-id": "ironmanrust.browser-sidecar"
+        },
+        "yandex": {
+            "package-id": "ironmanrust.browser-sidecar"
+        }
+    }
+}

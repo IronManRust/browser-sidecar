@@ -1,0 +1,43 @@
+﻿{
+    "manifest_version": 2,
+    "applications": {
+        "gecko": {
+            "id": "{{vendor.firefox.package-id}}",
+            "strict_min_version": "45.0"
+        }
+    },
+    "name": "{{name-full}}",
+    "description": "{{description}}",
+    "version": "{{version}}",
+    "icons": {
+        "48": "img/icon-48.png",
+        "96": "img/icon-96.png"
+    },
+    "permissions": [ "tabs", "http://*/*", "https://*/*" ],
+    "browser_action": {
+        "default_icon": {
+            "18": "img/icon-18.png",
+            "32": "img/icon-32.png",
+            "36": "img/icon-36.png",
+            "64": "img/icon-64.png"
+        },
+        "default_title": "{{name-full}}"
+    },
+    "background": {
+        "scripts": [ "js/background.js" ]
+    },
+    "content_scripts": [
+        {
+            "matches": [ "http://*/*", "https://*/*" ],
+            "css": [ "css/browser-sidecar.css" ],
+            "js": [ "js/browser-sidecar.js", "js/browser-sidecar-vendor.js", "lib/jquery.min.js", "lib/jquery-ui.min.js" ]
+        }
+    ],
+    "web_accessible_resources": [
+        "img/grip.png",
+        "img/highlighter.png",
+        "html/overlay.html",
+        "css/overlay.css",
+        "js/overlay.js"
+    ]
+}

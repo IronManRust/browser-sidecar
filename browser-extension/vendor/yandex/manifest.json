@@ -1,0 +1,32 @@
+﻿{
+    "manifest_version": 2,
+    "name": "{{name-full}}",
+    "description": "{{description}}",
+    "author": "{{author}}",
+    "version": "{{version}}",
+    "icons": {
+        "16": "img/icon-16.png",
+        "32": "img/icon-32.png",
+        "48": "img/icon-48.png",
+        "128": "img/icon-128.png"
+    },
+    "permissions": [ "tabs", "http://*/*", "https://*/*" ],
+    "browser_action": {
+        "default_icon": {
+            "19": "img/icon-19.png",
+            "38": "img/icon-38.png"
+        },
+        "default_title": "{{name-full}}"
+    },
+    "background": {
+        "scripts": [ "js/background.js" ]
+    },
+    "content_scripts": [
+        {
+            "matches": [ "http://*/*", "https://*/*" ],
+            "css": [ "css/browser-sidecar.css" ],
+            "js": [ "js/browser-sidecar.js", "js/browser-sidecar-vendor.js", "lib/jquery.min.js", "lib/jquery-ui.min.js" ]
+        }
+    ],
+    "web_accessible_resources": [ "img/*.*", "js/*.*", "css/*.*", "html/*.*" ]
+}

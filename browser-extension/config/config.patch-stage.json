@@ -1,0 +1,3 @@
+﻿[
+    { "op": "replace", "path": "/name-full", "value": "Browser Sidecar (Stage)" }
+]

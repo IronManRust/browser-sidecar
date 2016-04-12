@@ -1,0 +1,9 @@
+﻿#browser-sidecar-overlay,
+#browser-sidecar-capture-context,
+#browser-sidecar-highlighter-border-top,
+#browser-sidecar-highlighter-border-bottom,
+#browser-sidecar-highlighter-border-left,
+#browser-sidecar-highlighter-border-right
+{
+    display: none;
+}

@@ -1,0 +1,8 @@
+h1, input {
+    text-align: center;
+}
+
+input, textarea {
+    margin: auto;
+    width: 100%;
+}

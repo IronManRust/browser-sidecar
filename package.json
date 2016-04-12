@@ -1,0 +1,24 @@
+﻿{
+    "name": "ironmanrust.browser-sidecar",
+    "version": "1.0.0",
+    "description": "A cross-platform, cross-browser extension that adds a 'sidecar' of content to any webpage you visit, suitable for an Evernote-like web clipper as well as many other uses.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "IronManRust",
+    "license": "ISC",
+    "repository": { },
+    "dependencies": {
+        "del": "^1.2.0",
+        "event-stream": "^3.3.1",
+        "gulp": "^3.9.0",
+        "gulp-ignore": "^1.2.1",
+        "gulp-rename": "^1.2.2",
+        "gulp-token-replace": "^1.0.2",
+        "gulp-zip": "^3.0.2",
+        "jsonpatch": "^1.0.1",
+        "run-sequence": "^1.1.2",
+        "yargs": "^3.15.0"
+    }
+}
