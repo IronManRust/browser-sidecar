@@ -74,6 +74,10 @@ gulp.task('safari', function (cb) {
     return rseq(['safari-clean'], ['safari-build'], ['safari-config'], ['safari-store'], ['safari-dist'], cb);
 });
 
+gulp.task('vivaldi', function (cb) {
+    return rseq(['vivaldi-clean'], ['vivaldi-build'], ['vivaldi-config'], ['vivaldi-store'], ['vivaldi-dist'], cb);
+});
+
 gulp.task('yandex', function (cb) {
     return rseq(['yandex-clean'], ['yandex-build'], ['yandex-config'], ['yandex-store'], ['yandex-dist'], cb);
 });
@@ -83,7 +87,7 @@ gulp.task('yandex', function (cb) {
 // +-----------------------+
 
 gulp.task('clean', function (cb) {
-    return rseq(['chrome-clean', 'edge-clean', 'firefox-clean', 'opera-clean', 'safari-clean', 'yandex-clean'], cb);
+    return rseq(['chrome-clean', 'edge-clean', 'firefox-clean', 'opera-clean', 'safari-clean', 'vivaldi-clean', 'yandex-clean'], cb);
 });
 
 gulp.task('chrome-clean', function (cb) {
@@ -106,6 +110,10 @@ gulp.task('safari-clean', function (cb) {
     return del(['./build/safari/**/*', './config/safari/**/*', './dist/safari/**/*'], cb);
 });
 
+gulp.task('vivaldi-clean', function (cb) {
+    return del(['./build/vivaldi/**/*', './config/vivaldi/**/*', './dist/vivaldi/**/*'], cb);
+});
+
 gulp.task('yandex-clean', function (cb) {
     return del(['./build/yandex/**/*', './config/yandex/**/*', './dist/yandex/**/*'], cb);
 });
@@ -115,7 +123,7 @@ gulp.task('yandex-clean', function (cb) {
 // +-----------------------+
 
 gulp.task('build', function (cb) {
-    return rseq(['chrome-build', 'edge-build', 'firefox-build', 'opera-build', 'safari-build', 'yandex-build'], cb);
+    return rseq(['chrome-build', 'edge-build', 'firefox-build', 'opera-build', 'safari-build', 'vivaldi-build', 'yandex-build'], cb);
 });
 
 gulp.task('chrome-build', function () {
@@ -180,6 +188,17 @@ gulp.task('safari-build', function () {
                     pipe('./img/icon-64.png', './build/safari'));
 });
 
+gulp.task('vivaldi-build', function () {
+    return es.merge(pipe('./lib/**/*', './build/vivaldi/lib'),
+                    pipe('./img/**/*', './build/vivaldi/img'),
+                    pipe('./js/**/*', './build/vivaldi/js'),
+                    pipe('./css/**/*', './build/vivaldi/css'),
+                    pipe('./html/**/*', './build/vivaldi/html'),
+                    pipe('./vendor/vivaldi/browser-sidecar-vendor.js', './build/vivaldi/js'),
+                    pipe('./vendor/vivaldi/background.js', './build/vivaldi/js'),
+                    pipe('./vendor/vivaldi/manifest.json', './build/vivaldi'));
+});
+
 gulp.task('yandex-build', function () {
     return es.merge(pipe('./lib/**/*', './build/yandex/lib'),
                     pipe('./img/**/*', './build/yandex/img'),
@@ -196,7 +215,7 @@ gulp.task('yandex-build', function () {
 // +---------------------------+
 
 gulp.task('config', function (cb) {
-    return rseq(['chrome-config', 'edge-config', 'firefox-config', 'opera-config', 'safari-config', 'yandex-config'], cb);
+    return rseq(['chrome-config', 'edge-config', 'firefox-config', 'opera-config', 'safari-config', 'vivaldi-config', 'yandex-config'], cb);
 });
 
 gulp.task('chrome-config', function (cb) {
@@ -290,6 +309,24 @@ gulp.task('safari-config-replace', function () {
                .pipe(gulp.dest('./config/safari'));
 });
 
+gulp.task('vivaldi-config', function (cb) {
+    return rseq(['vivaldi-config-copy', 'vivaldi-config-replace'], cb);
+});
+
+gulp.task('vivaldi-config-copy', function () {
+    return gulp.src(['./build/vivaldi/**/*'])
+               .pipe(ignore.exclude('**/*.js'))
+               .pipe(ignore.exclude('**/*.json'))
+               .pipe(ignore.exclude('**/*.html'))
+               .pipe(gulp.dest('./config/vivaldi'));
+});
+
+gulp.task('vivaldi-config-replace', function () {
+    return gulp.src(['./build/vivaldi/**/*.js', './build/vivaldi/**/*.json', './build/vivaldi/**/*.html'])
+               .pipe(replace({ global: config }))
+               .pipe(gulp.dest('./config/vivaldi'));
+});
+
 gulp.task('yandex-config', function (cb) {
     return rseq(['yandex-config-copy', 'yandex-config-replace'], cb);
 });
@@ -313,7 +350,7 @@ gulp.task('yandex-config-replace', function () {
 // +------------------------------+
 
 gulp.task('store', function (cb) {
-    return rseq(['chrome-store', 'edge-store', 'firefox-store', 'opera-store', 'safari-store', 'yandex-store'], cb);
+    return rseq(['chrome-store', 'edge-store', 'firefox-store', 'opera-store', 'safari-store', 'vivaldi-store', 'yandex-store'], cb);
 });
 
 gulp.task('chrome-store', function () {
@@ -346,6 +383,12 @@ gulp.task('safari-store', function () {
                .pipe(gulp.dest('./dist/safari'));
 });
 
+gulp.task('vivaldi-store', function () {
+    return gulp.src(['./store/change-log.txt', './store/vivaldi/screenshot.png'])
+               .pipe(zip('browser-sidecar-' + config.version + '-' + environment + '-store.zip'))
+               .pipe(gulp.dest('./dist/vivaldi'));
+});
+
 gulp.task('yandex-store', function () {
     return gulp.src(['./store/change-log.txt', './store/yandex/screenshot.png'])
                .pipe(zip('browser-sidecar-' + config.version + '-' + environment + '-store.zip'))
@@ -357,7 +400,7 @@ gulp.task('yandex-store', function () {
 // +----------------------------+
 
 gulp.task('dist', function (cb) {
-    return rseq(['chrome-dist', 'edge-dist', 'firefox-dist', 'opera-dist', 'safari-dist', 'yandex-dist'], cb);
+    return rseq(['chrome-dist', 'edge-dist', 'firefox-dist', 'opera-dist', 'safari-dist', 'vivaldi-dist', 'yandex-dist'], cb);
 });
 
 gulp.task('chrome-dist', function () {
@@ -387,6 +430,12 @@ gulp.task('opera-dist', function () {
 gulp.task('safari-dist', function () {
     gulp.src('./config/safari/**/*')
         .pipe(gulp.dest('./dist/safari/browser-sidecar-' + config.version + '-' + environment + '.safariextension'));
+});
+
+gulp.task('vivaldi-dist', function () {
+    gulp.src('./config/vivaldi/**/*')
+        .pipe(zip('browser-sidecar-' + config.version + '-' + environment + '-extension.zip'))
+        .pipe(gulp.dest('./dist/vivaldi'));
 });
 
 gulp.task('yandex-dist', function () {

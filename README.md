@@ -17,6 +17,9 @@ A cross-platform, cross-browser extension that adds a "sidecar" of content to an
 ### [Apple Safari](https://en.wikipedia.org/wiki/Safari_%28web_browser%29) - Windows / OSX
 ![Apple Safari](browser-extension/store/safari/screenshot.png "Apple Safari")
 
+### [Vivaldi](https://en.wikipedia.org/wiki/Vivaldi_%28web_browser%29) - Windows / OSX / Linux
+![Vivaldi](browser-extension/store/vivaldi/screenshot.png "Vivaldi")
+
 ### [Yandex Browser](https://en.wikipedia.org/wiki/Yandex_Browser) - Windows / OSX
 ![Yandex Browser](browser-extension/store/yandex/screenshot.png "Yandex Browser")
 

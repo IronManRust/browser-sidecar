@@ -9,7 +9,7 @@
         "chrome": {
             "package-id": "ironmanrust.browser-sidecar"
         },
-        "edge": { 
+        "edge": {
             "package-id": "ironmanrust.browser-sidecar"
         },
         "firefox": {
@@ -19,6 +19,9 @@
             "package-id": "ironmanrust.browser-sidecar"
         },
         "safari": {
+            "package-id": "ironmanrust.browser-sidecar"
+        },
+        "vivaldi": {
             "package-id": "ironmanrust.browser-sidecar"
         },
         "yandex": {
