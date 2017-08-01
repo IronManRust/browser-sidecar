@@ -13,16 +13,17 @@
     },
     "permissions": [ "tabs", "http://*/*", "https://*/*" ],
     "browser_action": {
-        "icon": {
+        "default_icon": {
             "20": "img/icon-20.png",
             "25": "img/icon-25.png",
             "30": "img/icon-30.png",
             "40": "img/icon-40.png"
         },
-        "title": "{{name-full}}"
+        "default_title": "{{name-full}}"
     },
     "background": {
-        "page": "html/background.html"
+        "page": "html/background.html",
+        "persistent": false
     },
     "content_scripts": [
         {
